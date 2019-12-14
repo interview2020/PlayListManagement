@@ -2,7 +2,7 @@ using System;
 
 using System.Collections.Generic;
 
-namespace PlayListManagement
+namespace PlayListManagement.Model
 {
     class PlayList
     {

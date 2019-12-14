@@ -1,6 +1,6 @@
 using System;
 
-namespace PlayListManagement
+namespace PlayListManagement.Model
 {
     class Song
     {
