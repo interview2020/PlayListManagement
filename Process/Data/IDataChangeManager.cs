@@ -5,6 +5,9 @@ using PlayListManagement.Model;
 
 namespace PlayListManagement.Process.Data
 {
+    /// <summary>
+    /// IDataChangeManager: Interface for DataChangeManager
+    /// </summary>
     interface IDataChangeManager
     {
         void ApplyChangeSetToInput();

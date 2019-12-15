@@ -6,7 +6,10 @@ using PlayListManagement.Process.IOOPerations;
 
 namespace PlayListManagement.Process.Data
 {
-    class DataChangeManager: IDataChangeManager
+    /// <summary>
+    /// DataChangeManager: Facade to data operations on the file data
+    /// </summary>
+    class DataChangeManager : IDataChangeManager
     {
         public string InputFile { get; private set; }
         public string ChangeFile { get; private set; }
@@ -21,12 +24,19 @@ namespace PlayListManagement.Process.Data
             OutputFile = output_file;
         }
 
+        /// <summary>
+        /// DeserializeFiles: DeserializeFiles json file to C# objects
+        /// </summary>
         private void DeserializeFiles()
         {
             IInputDataReader jsonDataReader = new JsonDataReader();
             inputData = jsonDataReader.DeserializeInputData(InputFile);
             changeSetData = jsonDataReader.DeserializeChangeSet(ChangeFile);
         }
+
+        /// <summary>
+        /// ApplyChangeSetToInput: Applies the change set data to the input data
+        /// </summary>
         public void ApplyChangeSetToInput()
         {
             DeserializeFiles();
@@ -34,11 +44,13 @@ namespace PlayListManagement.Process.Data
             inputData = playListOperations.ApplyChangeSetToInput();
         }
 
+        /// <summary>
+        /// GenerateOutputFile: Generates output file. Will over write if the file exists
+        /// </summary>
         public void GenerateOutputFile()
         {
             IOutputDataWriter jsonDataReader = new JsonDataWriter();
             jsonDataReader.GenerateOutputFile(inputData, OutputFile);
-
         }
     }
 }

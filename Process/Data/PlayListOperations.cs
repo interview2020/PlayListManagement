@@ -15,6 +15,11 @@ namespace PlayListManagement.Process.Data
             base.inputData = inputData;
             base.changeSetData = changeSet;
         }
+
+        /// <summary>
+        /// ApplyChangeSetToInput: Applies all the changes in the change set to input data
+        /// </summary>
+        /// <returns>UsersSongsPlayLists</returns>
         public override UsersSongsPlayLists ApplyChangeSetToInput()
         {
             ApplyNewAndUpdateChangesToPlayList();

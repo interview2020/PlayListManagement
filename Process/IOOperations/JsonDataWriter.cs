@@ -5,18 +5,19 @@ using System.IO;
 
 namespace PlayListManagement.Process.IOOPerations
 {
+    /// <summary>
+    /// JsonDataWriter: Converts c# objects to json and writes to file
+    /// </summary>
     class JsonDataWriter : IOutputDataWriter
     {
+        /// <summary>
+        /// GenerateOutputFile: Generates json output file based on the object data passed. If the target exists, file is overwritten
+        /// </summary>
+        /// <param name="updatedData"></param>
+        /// <param name="outputfilepath"></param>
         public void GenerateOutputFile(UsersSongsPlayLists updatedData, string outputfilepath)
         {
-
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true,
-            };
-            var jsondata = JsonSerializer.Serialize(updatedData, options);
-            Console.WriteLine(jsondata);
+            var jsondata = SerializeToJsonString(updatedData);
 
             try
             {
@@ -33,13 +34,21 @@ namespace PlayListManagement.Process.IOOPerations
             catch (IOException ioException)
             {
                 Console.WriteLine($"Error during file write { ioException}");
-
-                Console.WriteLine("Error during file write");
             }
             catch (Exception exception)
             {
                 Console.WriteLine($"Error during file write{ exception}");
             }
+        }
+
+        private string SerializeToJsonString(UsersSongsPlayLists updatedData)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true,
+            };
+            return JsonSerializer.Serialize(updatedData, options);
         }
     }
 }

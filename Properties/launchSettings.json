@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PlayListManagement": {
+      "commandName": "Project",
+      "commandLineArgs": "mixtape-data.json change-data.json output.json"
+    }
+  }
+}
