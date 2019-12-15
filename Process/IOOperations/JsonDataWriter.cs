@@ -13,11 +13,11 @@ namespace PlayListManagement.Process.IOOPerations
         /// <summary>
         /// GenerateOutputFile: Generates json output file based on the object data passed. If the target exists, file is overwritten
         /// </summary>
-        /// <param name="updatedData"></param>
+        /// <param name="usersSongsPlayLists"></param>
         /// <param name="outputfilepath"></param>
-        public void GenerateOutputFile(UsersSongsPlayLists updatedData, string outputfilepath)
+        public void GenerateOutputFile(UsersSongsPlayLists usersSongsPlayLists, string outputfilepath)
         {
-            var jsondata = SerializeToJsonString(updatedData);
+            var jsondata = SerializeToJsonString(usersSongsPlayLists);
 
             try
             {
@@ -40,15 +40,19 @@ namespace PlayListManagement.Process.IOOPerations
                 Console.WriteLine($"Error during file write{ exception}");
             }
         }
-
-        private string SerializeToJsonString(UsersSongsPlayLists updatedData)
+        /// <summary>
+        /// SerializeToJsonString: Serialize .net object usersSongsPlayLists to json string.
+        /// </summary>
+        /// <param name="usersSongsPlayLists"></param>
+        /// <returns></returns>
+        private string SerializeToJsonString(UsersSongsPlayLists usersSongsPlayLists)
         {
             var options = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true,
             };
-            return JsonSerializer.Serialize(updatedData, options);
+            return JsonSerializer.Serialize(usersSongsPlayLists, options);
         }
     }
 }

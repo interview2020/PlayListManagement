@@ -27,7 +27,6 @@ namespace PlayListManagement.Process.Data
             return inputData;
         }
     
-
         private void ApplyNewAndUpdateChangesToPlayList()
         {
             if(changeSetData.Additions.Playlists == null)
@@ -47,13 +46,14 @@ namespace PlayListManagement.Process.Data
                     }
                     else
                     {
-                        Console.WriteLine($"ApplyPlayListChanges: Failed to udate songs in playlist {playList.Id} for user {playList.User_id}. Invalid user or song ids.");
+                        Console.WriteLine($"ApplyPlayListChanges: Failed to update songs in playlist {playList.Id} for user {playList.User_id}. Invalid user or song ids.");
                     }
                     continue;
                 }
                 if (!IsPlaylistExisting(playList.Id, playList.User_id))
                 {
                     inputData.Playlists.Add(playList);
+                    Console.WriteLine($"ApplyPlayListChanges: Added new playlist {playList.Id} for user {playList.User_id}");
                 }
                 else
                 {
@@ -73,6 +73,7 @@ namespace PlayListManagement.Process.Data
                 if (IsPlaylistExisting(playList.Id, playList.User_id))
                 {
                     inputData.Playlists.Remove(inputData.Playlists.Find(x => x.Id == playList.Id && x.User_id == playList.User_id));
+                    Console.WriteLine($"RemovePlaylist: Playlist {playList.Id} of user {playList.User_id} removed.");
                 }
                 else {
                     Console.WriteLine($"RemovePlaylist: Playlist {playList.Id} with User {playList.User_id} does not exist. Operation skipped");
@@ -88,7 +89,8 @@ namespace PlayListManagement.Process.Data
                 if (!playList.Song_ids.Contains(Id))
                 {
                     playList.Song_ids.Add(Id);
-                }
+                    Console.WriteLine($"AddExistingSongToPlaylist: Added new song {Id} to playlist {playList.Id}");
+                } 
                 else 
                 {
                     Console.WriteLine($"AddExistingSongToPlaylist: Song {Id} already exists in playlist {playList.Id}. Operation skipped.");
