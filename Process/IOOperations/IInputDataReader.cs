@@ -9,6 +9,6 @@ namespace PlayListManagement.Process.IOOPerations
         bool IsInputDataValid();
         bool IsChangeSetDataValid();
         UsersSongsPlayLists DeserializeInputData(string filepath);
-        ChangeSet DeserializeChangeSet(string jsonString);
+        UsersSongsPlayListsChangeSet DeserializeChangeSet(string jsonString);
     }
 }

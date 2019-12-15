@@ -1,6 +1,7 @@
 ﻿using System;
 using PlayListManagement.Model;
 using PlayListManagement.Process.IOOPerations;
+using PlayListManagement.Process.Data;
 
 namespace PlayListManagement
 {
@@ -16,12 +17,11 @@ namespace PlayListManagement
                 Console.WriteLine("Usage: PlayListManagement <input-file> <changes-file> <output-file>");
                 return 1;
             }
+            
             */
-
-            IInputDataReader jsonDataReader = new JsonDataReader();
-            UsersSongsPlayLists inputData = jsonDataReader.DeserializeInputData("mixtape-data.json");
-            ChangeSet changeData = jsonDataReader.DeserializeChangeSet("change-data.json");
-
+            IDataChangeManager datachangeManager = new DataChangeManager("mixtape-data.json", "change-data.json", "out.json");
+            datachangeManager.ApplyChangeSetToInput();
+            datachangeManager.GenerateOutputFile();
             return 0;
         }
     }

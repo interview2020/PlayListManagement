@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PlayListManagement.Model
 {
-    class PlayList
+    class Playlist
     {
         public string Id { get; set; }
         public string User_id { get; set; }

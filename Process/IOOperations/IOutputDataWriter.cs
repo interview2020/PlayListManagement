@@ -6,6 +6,6 @@ namespace PlayListManagement.Process.IOOPerations
 {
     interface IOutputDataWriter
     {
-        void GenerateOutputFile();
+        void GenerateOutputFile(UsersSongsPlayLists updatedData, string outputfilepath);
     }
 }

@@ -6,7 +6,7 @@ namespace PlayListManagement.Process.IOOPerations
 {
     class JsonDataReader : IInputDataReader
     {
-        public ChangeSet DeserializeChangeSet(string filepath)
+        public UsersSongsPlayListsChangeSet DeserializeChangeSet(string filepath)
         {
             IsInputDataValid();
             var options = new JsonSerializerOptions
@@ -15,7 +15,7 @@ namespace PlayListManagement.Process.IOOPerations
                 WriteIndented = true,
                 IgnoreNullValues = true,
             };
-            return JsonSerializer.Deserialize<ChangeSet>(File.ReadAllText(filepath), options);
+            return JsonSerializer.Deserialize<UsersSongsPlayListsChangeSet>(File.ReadAllText(filepath), options);
           }
 
         public UsersSongsPlayLists DeserializeInputData(string filepath)
