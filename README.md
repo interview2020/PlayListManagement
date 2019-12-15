@@ -39,7 +39,7 @@ A sample of the input (mixtape-data.json) and change (change-data.json) file is 
 - Updates - Used for all update actions. ( The updates will completely updates the item with the new data provided. Not implemented)
 - Deletes - Used for all delete action. For playlist removal, specify the Playlist Id and User Id as shown in the sample file change-data.json file.
 
-### Handling Extremely Large Input files
+### Handling extremely large input files
 
 The application needs modifications to handle extremely large files. Changes should be applied while reading the file, processing and writing the file.
 
