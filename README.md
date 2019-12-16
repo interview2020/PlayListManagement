@@ -50,7 +50,7 @@ Changes for reading the file:
 
 Changes for processing the file:
 
-- Parallel processing for items that does not have conflicting changes. e.g. Add/Updates for the playlist for the different users. Need more analysis on how this can be done.
+- Parallel processing for items that does not have conflicting changes. e.g. Add/Updates for the playlist for the different users. 
 
 Changes for writing the files:
 
